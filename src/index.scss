@@ -84,6 +84,7 @@ code {
 .sneakers-list {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .card {
@@ -91,8 +92,9 @@ code {
     padding: 1rem;
     width: 200px;
     border-radius: 30px;
-    // margin-right: 30px;
+    margin-right: 20px;
     transition: 0.2s;
+    margin-bottom: 30px;
 
     &:hover {
         box-shadow: 0px 20px 30px 0px #0000003b;
@@ -140,6 +142,8 @@ code {
     }
 }
 .overlay {
+    display: none;
+
     position: absolute;
     left: 0;
     top: 0;
@@ -150,15 +154,110 @@ code {
 }
 .drawer {
     position: absolute;
-    width: 385px;
+    width: 420px;
     height: 100%;
     right: 0;
     background-color: #ffffff;
     box-shadow: -10px 4px 23px rgba(0, 0, 0, 0.1);
     padding: 2rem;
-
+    display: flex;
+    flex-direction: column;
+    .items {
+        flex: 1;
+        overflow: auto;
+        margin-bottom: 40px;
+    }
     h2 {
+        display: flex;
+        justify-content: space-between;
         margin: 0;
+        margin-bottom: 20px;
         font-size: 24px;
+        img {
+            cursor: pointer;
+        }
+    }
+    .cartSneakersBlok {
+        margin-right: 15px;
+    }
+    .cartItem {
+        display: flex;
+        align-items: center;
+        border: 1px solid #f2f2f2;
+        padding: 10px;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 20px;
+
+        .removeBtn {
+            cursor: pointer;
+            opacity: 0.5;
+            transition: 0.2s;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+        img {
+            margin-right: 15px;
+        }
+        p {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        b {
+            font-size: 15px;
+        }
+    }
+    .priceBlock {
+        ul {
+            margin-bottom: 40px;
+        }
+        .priceBlockItem {
+            display: flex;
+            list-style: none;
+            align-items: flex-end;
+            margin-bottom: 20px;
+
+            div {
+                flex: 1;
+                height: 1px;
+                border-bottom: 1px dashed #dfdfdf;
+                position: relative;
+                top: -4px;
+                margin: 0 7px;
+            }
+        }
+    }
+    .greenButton {
+        position: relative;
+
+        &:hover {
+            img {
+                transform: translateX(5px);
+            }
+        }
+        img {
+            position: absolute;
+            right: 40px;
+            top: 20px;
+            transition: 0.2s;
+        }
+    }
+}
+.greenButton {
+    width: 100%;
+    height: 55px;
+    background-color: #9dd458;
+    border-radius: 18px;
+    border: 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+        background-color: darken(#9dd458, 10);
     }
 }
