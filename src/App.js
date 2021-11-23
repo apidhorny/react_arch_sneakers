@@ -1,9 +1,16 @@
 import React from 'react';
-import Card from './components/Card';
+import Card from './components/Card/Card';
 import Drawer from './components/Drawer';
 import Header from './components/Header';
 
 function App() {
+    const data = [
+        { title: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 12999, imgUrl: 'img/sneakers/1.jpg' },
+        { title: 'Мужские Кроссовки Nike Air Max 270', price: 15600, imgUrl: 'img/sneakers/2.jpg' },
+        { title: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 8490, imgUrl: 'img/sneakers/3.jpg' },
+        { title: 'Кроссовки Puma X Aka Boku Future Rider', price: 8999, imgUrl: 'img/sneakers/4.jpg' },
+    ];
+
     return (
         <div className='App'>
             <Drawer />
@@ -18,14 +25,9 @@ function App() {
                 </div>
 
                 <div className='sneakers-list'>
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
+                    {data.map((item) => (
+                        <Card title={item.title} price={item.price} imageUrl={item.imgUrl} />
+                    ))}
                 </div>
             </section>
         </div>
