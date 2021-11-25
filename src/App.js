@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from './components/Card/Card';
 import Drawer from './components/Drawer';
 import Header from './components/Header';
@@ -11,10 +11,12 @@ function App() {
         { title: 'Кроссовки Puma X Aka Boku Future Rider', price: 8999, imgUrl: 'img/sneakers/4.jpg' },
     ];
 
+    const [cartOpened, setCardOpened] = useState(false);
+
     return (
         <div className='App'>
-            <Drawer />
-            <Header />
+            {cartOpened && <Drawer onClose={() => setCardOpened(false)} />}
+            <Header onOpenCart={() => setCardOpened(true)} />
             <section className='content'>
                 <div className='header-and-serach-block'>
                     <h1>Всі кросівки</h1>

@@ -7,6 +7,10 @@
     transition: 0.2s;
     margin-bottom: 30px;
 
+    .plus {
+        cursor: pointer;
+    }
+
     &:hover {
         box-shadow: 0px 20px 30px 0px #0000003b;
         transform: translateY(-5px);

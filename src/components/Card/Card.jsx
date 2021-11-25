@@ -1,11 +1,16 @@
-import React from 'react';
-import styles from './Card.module.scss'
-
+import React, { useEffect, useState } from 'react';
+import styles from './Card.module.scss';
 
 const Card = ({ title, price, imageUrl }) => {
-    const onClickButton = () => {
-        alert(title);
+    const [isAdded, setIsAdded] = useState(false);
+
+    const onClickPlus = () => {
+        setIsAdded(!isAdded)
     };
+
+    // useEffect(()=> {
+    //     console.log('ss');
+    // }, [isAdded])
 
     return (
         <div className={styles.card}>
@@ -19,9 +24,7 @@ const Card = ({ title, price, imageUrl }) => {
                     <span>Ціна:</span>
                     <b>{price} грн.</b>
                 </div>
-                <button className={styles.btnAdd} onClick={onClickButton}>
-                    <img src='img/icons/plus.svg' alt='add' width={11} height={11} />
-                </button>
+                <img className={styles.plus} onClick={onClickPlus} src={isAdded ? 'img/icons/added.svg' : 'img/icons/add.svg'} alt='add' />
             </div>
         </div>
     );

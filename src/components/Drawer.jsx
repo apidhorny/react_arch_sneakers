@@ -1,12 +1,12 @@
 import React from 'react'
 
-const Drawer = () => {
+const Drawer = ({onClose}) => {
     return (
         <div className='overlay'>
             
         <div className='drawer'>
         <h2>
-            Корзина <img src='/img/icons/btn-delete.svg' alt='delete' />
+            Корзина <img onClick={onClose} src='/img/icons/btn-delete.svg' alt='delete' />
         </h2>
         <div className='items'>
             <div className='cartItem'>
