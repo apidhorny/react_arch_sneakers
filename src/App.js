@@ -1,21 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from './components/Card/Card';
 import Drawer from './components/Drawer';
 import Header from './components/Header';
 
 function App() {
-    const data = [
-        { title: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 12999, imgUrl: 'img/sneakers/1.jpg' },
-        { title: 'Мужские Кроссовки Nike Air Max 270', price: 15600, imgUrl: 'img/sneakers/2.jpg' },
-        { title: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 8490, imgUrl: 'img/sneakers/3.jpg' },
-        { title: 'Кроссовки Puma X Aka Boku Future Rider', price: 8999, imgUrl: 'img/sneakers/4.jpg' },
-    ];
-
+    const [items, setItems] = useState([]);
+    const [cartItems, setCartItems] = useState([]);
     const [cartOpened, setCardOpened] = useState(false);
+
+    useEffect(() => {
+        fetch('https://61abc152264ec200176d431f.mockapi.io/items')
+            .then((response) => {
+                return response.json();
+            })
+            .then((json) => {
+                setItems(json);
+            });
+    }, []);
+
+    const onAddToCart = (obj) => {
+        setCartItems([...cartItems, obj]);
+    };
 
     return (
         <div className='App'>
-            {cartOpened && <Drawer onClose={() => setCardOpened(false)} />}
+            {cartOpened && <Drawer items={cartItems} onClose={() => setCardOpened(false)} />}
             <Header onOpenCart={() => setCardOpened(true)} />
             <section className='content'>
                 <div className='header-and-serach-block'>
@@ -27,8 +36,8 @@ function App() {
                 </div>
 
                 <div className='sneakers-list'>
-                    {data.map((item) => (
-                        <Card title={item.title} price={item.price} imageUrl={item.imgUrl} />
+                    {items.map((item) => (
+                        <Card title={item.title} price={item.price} imageUrl={item.imgUrl} onPlus={() => onAddToCart(item)} />
                     ))}
                 </div>
             </section>
