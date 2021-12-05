@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './Card.module.scss';
 
 const Card = ({ title, price, imageUrl, onPlus }) => {
